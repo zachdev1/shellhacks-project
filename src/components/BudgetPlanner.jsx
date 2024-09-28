@@ -1,20 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/budgetPlanner.css";
 
 const BudgetPlanner = () => {
-  const [budget, setBudget] = useState(5000); // Example budget
   const [input, setInput] = useState("");
+  const navigate = useNavigate();
 
   const updateBudget = (e) => {
     e.preventDefault();
-    setBudget(parseFloat(input));
+    localStorage.setItem("budget", parseFloat(input))
     setInput("");
+    navigate("/dashboard")
   };
 
   return (
     <div className="budget-planner">
       <h3>Budget Planner</h3>
-      <p>Current Budget: ${budget}</p>
+      <p>Current Budget: ${localStorage.getItem("budget")}</p>
       <form onSubmit={updateBudget}>
         <input
           type="number"
