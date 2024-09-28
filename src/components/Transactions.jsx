@@ -10,6 +10,7 @@ const Transactions = () => {
   const [input, setInput] = useState({ description: "", amount: "", type: "" });
   const [editMode, setEditMode] = useState(null);
   const [editInput, setEditInput] = useState({ description: "", amount: "" });
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const storedTransactions = localStorage.getItem("transactions");
@@ -29,7 +30,12 @@ const Transactions = () => {
       description: input.description,
       amount: parseFloat(input.amount),
       type: input.type,
-    };
+    }
+    if (newTransaction.type === "Income") {
+      setTotal((prevTotal) => prevTotal + newTransaction.amount);
+    } else {
+      setTotal((prevTotal) => prevTotal - newTransaction.amount);
+    }
     const updatedTransactions = [...transactions, newTransaction];
     setTransactions(updatedTransactions);
     localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
@@ -99,42 +105,44 @@ const Transactions = () => {
       </div>
         
 
-        <button type="submit">Add Transaction</button>
+        <button type="submit" className="transactions-submit">Add Transaction</button>
       </form>
 
-      <ul>
-        {transactions.map((transaction) => (
-          <li key={transaction.id}
-          style={{backgroundColor: transaction.type === "Income" ? "green" : "red"}}>
-            {editMode === transaction.id ? (
-              <>
-                <input
-                  type="text"
-                  value={editInput.description}
-                  onChange={(e) =>
-                    setEditInput({ ...editInput, description: e.target.value })
-                  }
-                />
-                <input
-                  type="number"
-                  value={editInput.amount}
-                  onChange={(e) =>
-                    setEditInput({ ...editInput, amount: e.target.value })
-                  }
+      <div className="transaction-list">
+        <ul>
+          {transactions.map((transaction) => (
+            <li key={transaction.id}
+            style={{backgroundColor: transaction.type === "Income" ? "green" : "red"}}>
+              {editMode === transaction.id ? (
+                <>
+                  <input
+                    type="text"
+                    value={editInput.description}
+                    onChange={(e) =>
+                      setEditInput({ ...editInput, description: e.target.value })
+                    }
                   />
-                  <button onClick={() => saveEdit(transaction.id)}>Save</button>
-                  <button onClick={() => setEditMode(null)}>Cancel</button>
-              </>
-            ) : (
-              <>
-                {transaction.description}: ${transaction.amount}
-                <button className="editTransaction" onClick={() => handleEdit(transaction)}>Edit</button>
-                <button className="deleteTransaction" onClick={() => handleDelete(transaction.id)}>Delete</button>
-              </>
-            )}
-            </li>
-        ))}
-      </ul>
+                  <input
+                    type="number"
+                    value={editInput.amount}
+                    onChange={(e) =>
+                      setEditInput({ ...editInput, amount: e.target.value })
+                    }
+                    />
+                    <button onClick={() => saveEdit(transaction.id)}>Save</button>
+                    <button onClick={() => setEditMode(null)}>Cancel</button>
+                </>
+              ) : (
+                <>
+                  {transaction.description}: ${transaction.amount}
+                  <button className="editTransaction" onClick={() => handleEdit(transaction)}>Edit</button>
+                  <button className="deleteTransaction" onClick={() => handleDelete(transaction.id)}>Delete</button>
+                </>
+              )}
+              </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

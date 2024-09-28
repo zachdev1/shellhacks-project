@@ -1,41 +1,74 @@
 .transactions {
-    padding: 2rem;
-    width: 400px;
-    height: 600px;
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    background-color: #f9f9f9;
-  }
+  padding: 2rem;
+  width: 400px;
+  height: 600px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #f9f9f9;
+}
   
-  .transactions form {
-    display: grid;
-    gap: 2.3rem;
-    width: 80%;
-  }
+.transactions form {
+  display: grid;
+  gap: 2.3rem;
+  width: 80%;
+}
 
-  .radio-group {
-    display: flex;
-    align-items: center;
-  }
-  
-  .transactions ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .transactions li {
-    background-color: #f4f4f4;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 4px;
-  }
+.radio-group {
+  display: flex;
+  align-items: center;
+}
+
+.transactions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.transactions li {
+  background-color: #f4f4f4;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+}
+
+.transactions input {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.transactions-submit {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.transactions-submit:hover {
+  background-color: #438d45;
+}
 
 input[type="radio"], label {
   display: inline-block;
   margin-right: 10px;
   width: 80%;
+}
+
+.transaction-list {
+  width: 80%;
+}
+
+.transaction-list li{
+  padding: 1rem;
+}
+
+.transaction-list button {
+  margin: 0 5px;
 }
