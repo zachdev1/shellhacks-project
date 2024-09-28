@@ -28,11 +28,12 @@ export default function Login() {
         <>
             <form onSubmit={handleLogin}>
                 <label htmlFor="">email</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required></input>
 
                 <label htmlFor="">password</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required></input>
                 <button type='submit'>Login</button>
+                <p>Dont have an account? <a href="register">Register here!</a></p>
             </form>
         </>
     )
