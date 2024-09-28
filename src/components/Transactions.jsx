@@ -7,7 +7,7 @@ const Transactions = () => {
     return savedTransactions ? JSON.parse(savedTransactions) : [];
   });
 
-  const [input, setInput] = useState({ description: "", amount: "" });
+  const [input, setInput] = useState({ description: "", amount: "", type: "" });
   const [editMode, setEditMode] = useState(null);
   const [editInput, setEditInput] = useState({ description: "", amount: "" });
 
@@ -28,11 +28,12 @@ const Transactions = () => {
       id: transactions.length + 1,
       description: input.description,
       amount: parseFloat(input.amount),
+      type: input.type,
     };
     const updatedTransactions = [...transactions, newTransaction];
     setTransactions(updatedTransactions);
     localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
-    setInput({ description: "", amount: "" });
+    setInput({ description: "", amount: "", type: "" });
   };
 
   const handleDelete = (id) => {
@@ -44,7 +45,7 @@ const Transactions = () => {
 
   const handleEdit = (transaction) => {
     setEditMode(transaction.id)
-    setEditInput({description: transaction.description, amount: transaction.amount});
+    setEditInput({description: transaction.description, amount: transaction.amount,});
   }
 
   const saveEdit = (id) => {
@@ -77,9 +78,23 @@ const Transactions = () => {
           required
         />
       
-        <input type="radio" name="transactionType" id="transactionType" value="Income"></input>
+        <input
+          type="radio" 
+          name="transactionType" 
+          id="transactionType" 
+          value="Income"
+          checked={input.type === "Income"}
+          onChange={(e) => setInput({ ...input, type: e.target.value })}
+        />
         <label htmlFor="">Income</label>
-        <input type="radio" name="transactionType" id="transactionType" value="Expense"></input>
+        <input 
+          type="radio" 
+          name="transactionType" 
+          id="transactionType" 
+          value="Expense"
+          checked={input.type === "Expense"}
+          onChange={(e) => setInput({ ...input, type: e.target.value })}
+        />
         <label htmlFor="">Expense</label>
 
         <button type="submit">Add Transaction</button>
@@ -87,7 +102,8 @@ const Transactions = () => {
 
       <ul>
         {transactions.map((transaction) => (
-          <li key={transaction.id}>
+          <li key={transaction.id}
+          style={{backgroundColor: transaction.type === "Income" ? "green" : "red"}}>
             {editMode === transaction.id ? (
               <>
                 <input
