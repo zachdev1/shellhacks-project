@@ -1,14 +1,16 @@
 .dashboard {
     display: flex;
-    flex: 1;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
-    gap: 1rem;
-    justify-content: space-around;
   }
   
-  .widget {
-    background-color: #e0e0e0;
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
+  .chart-container {
+    width: 300px; /* Adjust the width to make the chart smaller */
+    height: 300px; /* Set the same height to maintain the aspect ratio */
+  }
+  
+  .chart-container canvas {
+    width: 100% !important; /* Ensure the chart scales to fit the container */
+    height: 100% !important;
   }

@@ -1,18 +1,32 @@
+<<<<<<< HEAD
 import React from "react";
 import "./App.css";
+=======
+// import React from "react";
+import "./styles/app.css";
+>>>>>>> 4be0f9c (Added Reports, transactions etc)
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
+import Transactions from "./components/Transactions";
+import BudgetPlanner from "./components/BudgetPlanner";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className="app">
-      <Header />
-      <div className="app-body">
-        <Sidebar />
-        <Dashboard />
+    <Router>
+      <div className="app">
+        <Header />
+        <div className="app-body">
+          <Sidebar />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/transactions" element={<Transactions />} />
+            <Route path="/budget-planner" element={<BudgetPlanner />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 

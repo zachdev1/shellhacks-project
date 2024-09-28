@@ -24,11 +24,8 @@ export default [
       'react-refresh': reactRefresh,
     },
     rules: {
-      "react/react-in-jsx-scope": "off",  // React 17+ does not require React in scope
-      "no-unused-vars": [
-        "warn",
-        { "varsIgnorePattern": "React" }
-      ],
+      "react/react-in-jsx-scope": "off", // For React 17+ (no need for React in scope)
+      "no-unused-vars": ["warn", { "varsIgnorePattern": "React" }],// Ignore unused React variable
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
