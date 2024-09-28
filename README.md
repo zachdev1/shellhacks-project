@@ -2,4 +2,4 @@
 
 ## Financial Project
 
-### by Zach, Anand, Ernest & Andy 
+### by Zach, Anand, & Andy 
