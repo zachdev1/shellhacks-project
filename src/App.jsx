@@ -1,12 +1,19 @@
-import './App.css'
+import React from "react";
+import "./app.css";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./components/Dashboard";
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
-  )
-}
+    <div className="app">
+      <Header />
+      <div className="app-body">
+        <Sidebar />
+        <Dashboard />
+      </div>
+    </div>
+  );
+};
 
-export default App
+export default App;

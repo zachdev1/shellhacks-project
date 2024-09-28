@@ -1,0 +1,14 @@
+.dashboard {
+    display: flex;
+    flex: 1;
+    padding: 2rem;
+    gap: 1rem;
+    justify-content: space-around;
+  }
+  
+  .widget {
+    background-color: #e0e0e0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+  }
