@@ -21,6 +21,8 @@ const Sidebar = () => {
         </li>
         <li>
           <Link to="/budget-planner">Budget Planner</Link>
+        </li> <li>
+          <Link to="/reports">Reports</Link>
         </li>
       </ul>
     </nav>

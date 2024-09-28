@@ -77,7 +77,7 @@ const Transactions = () => {
           onChange={(e) => setInput({ ...input, amount: e.target.value })}
           required
         />
-      
+      <div className="radio-group">
         <input
           type="radio" 
           name="transactionType" 
@@ -96,6 +96,8 @@ const Transactions = () => {
           onChange={(e) => setInput({ ...input, type: e.target.value })}
         />
         <label htmlFor="">Expense</label>
+      </div>
+        
 
         <button type="submit">Add Transaction</button>
       </form>

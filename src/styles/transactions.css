@@ -1,11 +1,25 @@
 .transactions {
     padding: 2rem;
+    width: 400px;
+    height: 600px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #f9f9f9;
   }
   
   .transactions form {
+    display: grid;
+    gap: 2.3rem;
+    width: 80%;
+  }
+
+  .radio-group {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    align-items: center;
   }
   
   .transactions ul {
@@ -19,3 +33,9 @@
     margin: 0.5rem 0;
     border-radius: 4px;
   }
+
+input[type="radio"], label {
+  display: inline-block;
+  margin-right: 10px;
+  width: 80%;
+}
