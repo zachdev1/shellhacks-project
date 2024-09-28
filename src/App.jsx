@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 import Transactions from "./components/Transactions";
 import BudgetPlanner from "./components/BudgetPlanner";
+import Login from "./pages/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
@@ -15,7 +16,8 @@ const App = () => {
         <div className="app-body">
           <Sidebar />
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/budget-planner" element={<BudgetPlanner />} />
           </Routes>
