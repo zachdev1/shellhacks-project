@@ -1,0 +1,19 @@
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 120px;
+  background-color: #f1f1f1;
+  position: sticky;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+}
+
+.sidebar li {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar ul {
+  padding: 0.6rem;
+}
