@@ -7,12 +7,15 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Dashboard = () => {
   const budget = localStorage.getItem("budget");
+  const total = localStorage.getItem("total");
+  const income = localStorage.getItem("income");
+  const expenses = localStorage.getItem("expenses");
   const data = {
     labels: ["Income", "Expenses"],
     datasets: [
       {
         label: "Financial Data",
-        data: [budget, 150],
+        data: [income, expenses],
         backgroundColor: ["#4caf50", "#f44336"],
       },
     ],
@@ -22,6 +25,9 @@ const Dashboard = () => {
     <main className="dashboard">
       <h2>Financial Overview</h2>
       <p>Current Budget: ${budget}</p>
+      <p>Current Total: ${total}</p>
+      <p>Current Income: ${income}</p>
+      <p>Current Expenses: ${expenses}</p>
       <div className="chart-container">
         <Pie data={data} />
       </div>

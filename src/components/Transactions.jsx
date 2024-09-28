@@ -11,6 +11,8 @@ const Transactions = () => {
   const [editMode, setEditMode] = useState(null);
   const [editInput, setEditInput] = useState({ description: "", amount: "" });
   const [total, setTotal] = useState(0);
+  const [income, setIncome] = useState(0);
+  const [expenses, setExpenses] = useState(0);
 
   useEffect(() => {
     const storedTransactions = localStorage.getItem("transactions");
@@ -23,6 +25,27 @@ const Transactions = () => {
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }, [transactions]);
 
+  useEffect(() => {
+    const storedTotal = localStorage.getItem("total");
+    if (storedTotal) {
+      setTotal(parseFloat(storedTotal));
+    }
+  }, []);
+
+  useEffect(() => {
+    const storedIncome = localStorage.getItem("income") ;
+    if (storedIncome) {
+      setIncome(parseFloat(storedIncome));
+    }
+  }, []);
+  
+  useEffect(() => {
+    const storedExpenses = localStorage.getItem("expenses") ;
+    if (storedExpenses) {
+      setExpenses(parseFloat(storedExpenses));
+    }
+  }, []);
+
   const addTransaction = (e) => {
     e.preventDefault();
     const newTransaction = {
@@ -31,22 +54,56 @@ const Transactions = () => {
       amount: parseFloat(input.amount),
       type: input.type,
     }
+
+    let updatedTotal, updatedIncome = income, updatedExpenses = expenses;
     if (newTransaction.type === "Income") {
-      setTotal((prevTotal) => prevTotal + newTransaction.amount);
+      updatedTotal = total + newTransaction.amount;
+      updatedIncome = income + newTransaction.amount
     } else {
-      setTotal((prevTotal) => prevTotal - newTransaction.amount);
+      updatedTotal = total - newTransaction.amount;
+      updatedExpenses = expenses + newTransaction.amount;
     }
+    
+    setTotal(updatedTotal);
+    setIncome(updatedIncome);
+    setExpenses(updatedExpenses);
+
     const updatedTransactions = [...transactions, newTransaction];
     setTransactions(updatedTransactions);
     localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
+    localStorage.setItem("total", updatedTotal);
+    localStorage.setItem("income", updatedIncome);
+    localStorage.setItem("expenses", updatedExpenses);
     setInput({ description: "", amount: "", type: "" });
   };
 
   const handleDelete = (id) => {
+    const transactionToDelete = transactions.find((transaction) => transaction.id === id)
+
+    let updatedTotal = total;
+    let updatedIncome = income;
+    let updatedExpenses = expenses;
+
+    if (transactionToDelete.type === "Income") {
+      updatedTotal -= transactionToDelete.amount;
+      updatedIncome -= transactionToDelete.amount;
+    } else {
+      updatedTotal += transactionToDelete.amount;
+      updatedExpenses -= transactionToDelete.amount;
+    }
+
     const updatedTransactions = transactions.filter(
       (transaction) => transaction.id !== id
     );
     setTransactions(updatedTransactions);
+    setTotal(updatedTotal);
+    setIncome(updatedIncome);
+    setExpenses(updatedExpenses);
+
+    localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
+    localStorage.setItem("total", updatedTotal);
+    localStorage.setItem("income", updatedIncome);
+    localStorage.setItem("expenses", updatedExpenses);
   }
 
   const handleEdit = (transaction) => {
@@ -55,12 +112,43 @@ const Transactions = () => {
   }
 
   const saveEdit = (id) => {
+
+    const transactionToEdit = transactions.find((transaction) => transaction.id === id);
+
+    let updatedTotal = total;
+    let updatedIncome = income;
+    let updatedExpenses = expenses;
+
+    if (transactionToEdit.type === "Income") {
+      updatedTotal -= transactionToEdit.amount;
+      updatedIncome -= transactionToEdit.amount;
+    } else {
+      updatedTotal += transactionToEdit.amount;
+      updatedExpenses -= transactionToEdit.amount;
+    }
+
+    if (editInput.type === "Income") {
+      updatedTotal += parseFloat(editInput.amount);
+      updatedIncome += parseFloat(editInput.amount);
+    } else {
+      updatedTotal -= parseFloat(editInput.amount);
+      updatedExpenses += parseFloat(editInput.amount);
+    }
+
     const updatedTransactions = transactions.map((transaction) =>
       transaction.id === id
         ? { ...transaction, description: editInput.description, amount: parseFloat(editInput.amount) }
         : transaction
     );
     setTransactions(updatedTransactions);
+    setTotal(updatedTotal);
+    setIncome(updatedIncome);
+    setExpenses(updatedExpenses);
+
+    localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
+    localStorage.setItem("total", updatedTotal);
+    localStorage.setItem("income", updatedIncome);
+    localStorage.setItem("expenses", updatedExpenses);
     setEditMode(null); // Exit edit mode
   };
 
@@ -143,6 +231,7 @@ const Transactions = () => {
           ))}
         </ul>
       </div>
+      <p>Total: {total}</p>
     </div>
   );
 };
