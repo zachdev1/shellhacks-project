@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import React from "react";
-import "./App.css";
-=======
 // import React from "react";
 import "./styles/app.css";
->>>>>>> 4be0f9c (Added Reports, transactions etc)
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
