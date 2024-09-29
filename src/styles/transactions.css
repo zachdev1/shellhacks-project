@@ -63,6 +63,8 @@ input[type="radio"], label {
 
 .transaction-list {
   width: 80%;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .transaction-list li{
@@ -70,5 +72,11 @@ input[type="radio"], label {
 }
 
 .transaction-list button {
-  margin: 0 5px;
+  padding: 0.2rem 0.5rem;
+  margin-left: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }

@@ -6,6 +6,7 @@ import Dashboard from "./components/Dashboard";
 import Transactions from "./components/Transactions";
 import BudgetPlanner from "./components/BudgetPlanner";
 import Reports from "./components/Reports";
+import Assets from "./components/Assets";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/budget-planner" element={<BudgetPlanner />} />
+            <Route path="/assets" element={<Assets />} />
           </Routes>
         </div>
       </div>

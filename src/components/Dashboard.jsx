@@ -10,13 +10,14 @@ const Dashboard = () => {
   const total = localStorage.getItem("total");
   const income = localStorage.getItem("income");
   const expenses = localStorage.getItem("expenses");
+  const assets = localStorage.getItem("assets");
   const data = {
-    labels: ["Income", "Expenses"],
+    labels: ["Income", "Expenses", "Assets"],
     datasets: [
       {
         label: "Financial Data",
-        data: [income, expenses],
-        backgroundColor: ["#4caf50", "#f44336"],
+        data: [income, expenses, assets],
+        backgroundColor: ["#4caf50", "#f44336", "#89CFF0"],
       },
     ],
   };
