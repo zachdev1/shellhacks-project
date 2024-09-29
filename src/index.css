@@ -9,3 +9,8 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+body {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
