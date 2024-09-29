@@ -29,7 +29,6 @@ const Assets = () => {
                     <option value="Real Estate">Real Estate</option>
                     <option value="Stocks">Stocks</option>
                     <option value="Vehicles">Vehicles</option>
-                    <option value="Stocks">Stocks</option>
                     <option value="Bonds">Bonds</option>
                     <option value="Cash">Cash</option>
                     <option value="Etc">Etc</option>

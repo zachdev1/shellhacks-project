@@ -27,8 +27,6 @@ const Dashboard = () => {
       <h2>Financial Overview</h2>
       <p>Current Budget: ${budget}</p>
       <p>Current Total: ${total}</p>
-      <p>Current Income: ${income}</p>
-      <p>Current Expenses: ${expenses}</p>
       <div className="chart-container">
         <Pie data={data} />
       </div>
