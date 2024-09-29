@@ -7,10 +7,10 @@ const Sidebar = () => {
     <nav className="sidebar">
       <ul>
         <li>
-          <Link to="/">*Login</Link>
+          <Link to="/">Login</Link>
         </li>
         <li>
-          <Link to="/register">*Register</Link>
+          <Link to="/register">Register</Link>
         </li>
 
         <li>
@@ -21,8 +21,9 @@ const Sidebar = () => {
         </li>
         <li>
           <Link to="/budget-planner">Budget Planner</Link>
-        </li> <li>
-          <Link to="/reports">Reports</Link>
+        </li> 
+        <li>
+          <Link to="/reports">*Reports</Link>
         </li>
       </ul>
     </nav>
